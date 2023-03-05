@@ -3,11 +3,19 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+const mongoose = require('mongoose');
+const uri = 'mongodb://127.0.0.1:27017/TiendaUn_catalogo_db';
+mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true })
+  .then(() => console.log('Conexión exitosa a la base de datos'))
+  .catch(err => console.log('Error al conectar a la base de datos: ' + err));
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 
 var app = express();
+
+const categoria = require('./models/categoria');
+const producto = require('./models/producto');
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -35,7 +43,8 @@ app.use(function(err, req, res, next) {
 
   // render the error page
   res.status(err.status || 500);
-  res.render('error');
+  res.render('error');  
 });
 
 module.exports = app;
+
