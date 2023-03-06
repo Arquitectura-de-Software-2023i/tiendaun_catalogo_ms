@@ -2,6 +2,11 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const productos = new Schema({
+    idProducto: {
+        type: Number,
+        required: true,
+        unique: true
+    },
     nombre: {
         type: String,
         required: true,
@@ -9,17 +14,21 @@ const productos = new Schema({
     },
     descripcion: {
         type: String,
-        required: true
+        required: false
     },
     precio: {
         type: Number,
         required: true
     },
-    CantidadDisponible: {
+    cantidadDisponible: {
         type: Number,
         required: true
     },
-    Categorias:[
+    imagen:{
+        type:String,
+        required:false
+    },
+    categorias:[
         {type: Schema.Types.ObjectId, ref: 'Categoria'}
       ]
 },{
