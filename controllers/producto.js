@@ -123,5 +123,21 @@ class productController{
         }
     };
 
+    searchProduct = async(req,res,next)=>{
+        const { nombre } = req.query;
+        try {
+            const productos = await Producto.find({ nombre: { $regex: new RegExp(nombre, 'i') } });
+            if (productos.length>0){
+                res.json(productos);
+            }
+            else{
+                res.json({ mensaje: 'No hay coincidencias' });
+            }
+        } catch (error) {
+            console.error(error);
+            res.status(500).json({ mensaje: 'Hubo un error al buscar los productos.' });
+        }
+    }
+
 }
 module.exports= productController;
