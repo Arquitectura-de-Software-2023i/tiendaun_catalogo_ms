@@ -8,8 +8,6 @@ const productRouterAdmin = express.Router();
 productRouterAdmin.use(bodyParser.json());
 const productsController = new productController();
 
-productRouterAdmin.use(bodyParser.json());
-
 productRouterAdmin.route('/') 
     .get(productsController.getAllProducts)
     .post(productsController.postProduct)
