@@ -17,7 +17,7 @@ var productsClientRouter = require('./routes/productos/clientes');
 var productsAdminRouter = require('./routes/productos/admins.route');
 var filterRouter = require('./routes/filtro');
 var searchRouter = require('./routes/search');
-//var categoryRouter = require('./routes/categoria');
+var categoryRouter = require('./routes/categoria');
 
 var app = express();
 //export models
@@ -40,7 +40,7 @@ app.use('/admins/productos', productsAdminRouter);
 app.use('/clientes/productos', productsClientRouter);
 app.use('/productos/filtro', filterRouter);
 app.use('/productos/busqueda', searchRouter);
-//app.use('/categorias', categoryRouter);
+app.use('/admins/categorias', categoryRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

@@ -7,7 +7,11 @@ var CategoriaSchema = new Schema({
         required: true,
         unique: true
     },
-    nombre: String
+    nombre: {
+        type: String,
+        required: true,
+        unique: false
+    }
 });
-
-module.exports = mongoose.model('Categoria', CategoriaSchema);
+let Categoria = mongoose.model('Categoria', CategoriaSchema);
+module.exports = Categoria;

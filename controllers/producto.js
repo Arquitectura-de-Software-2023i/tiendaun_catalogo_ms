@@ -1,6 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const Producto = require('../models/producto');
+const Categoria = require('../models/categoria');
 const  STATUS_CODES  = require("../utils/constants") ;
 function filtrarPorAtributo(arreglo, atributo, valor) {
     return arreglo.filter((objeto) => objeto[atributo].includes(valor));
@@ -40,7 +41,8 @@ class productController{
             nombre: req.body.nombre,
             descripcion: req.body.descripcion,
             precio: req.body.precio,
-            cantidadDisponible: req.body.cantidadDisponible
+            cantidadDisponible: req.body.cantidadDisponible,
+            categoria: req.body.categoria
           });
         try {
         const savedDoc = await newProduct.save();
@@ -126,8 +128,9 @@ class productController{
     searchProduct = async(req,res,next)=>{
         const { nombre } = req.query;
         try {
-            const productos = await Producto.find({ nombre: { $regex: new RegExp(nombre, 'i') } });
+            const productos = await Producto.find({ nombre: { $regex: new RegExp(nombre, 'i') } }).populate('categoria');
             if (productos.length>0){
+                console.log((productos[0].categoria));
                 res.json(productos);
             }
             else{

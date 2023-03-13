@@ -28,9 +28,8 @@ const productos = new Schema({
         type:String,
         required:false
     },
-    categorias:[
+    categoria:
         {type: Schema.Types.ObjectId, ref: 'Categoria'}
-      ]
 },{
     timestamps: true
 });
