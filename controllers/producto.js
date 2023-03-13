@@ -107,18 +107,25 @@ class productController{
             else if (maxPrice){
                 productsFiltered=productsFiltered.filter(product=>product.precio<=maxPrice );   
             }
-            else{
+            else if (minPrice){
                 productsFiltered=productsFiltered.filter(product=>product.precio>=minPrice );   
             }
 
-            // //filtar por categoria
-            // if (categories){
-            //     categories = categories.split(',');
-            //     console.log(productsFiltered[1].categorias);
-            //     productsFiltered = filtrarPorAtributo(productsFiltered,'categorias',categories);
-            // }
+            //filtar por categoria
+            if (categories){
+                categories = categories.split(',');
+                console.log(categories);
+                let productsFilteredCat=[];
+                for (let i=0;i<categories.length;i++){
+                    productsFiltered = productsFiltered.filter(product=>product.categoria==categories[i] );  
+                    productsFilteredCat = [...productsFilteredCat, ...productsFiltered];
+                }
+                res.json(productsFilteredCat);
+            }else{
+                res.json(productsFiltered);
+            }
 
-            res.json(productsFiltered);
+            
         }
         catch(err) {
           res.status(STATUS_CODES.INTERNAL_ERROR).json({ message: err.message });
