@@ -1,5 +1,3 @@
 node_modules
 public/images
 .env
-Docker-compose.yml
-Dockerfile

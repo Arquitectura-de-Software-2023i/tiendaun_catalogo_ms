@@ -1,0 +1,27 @@
+version: "3"
+services: 
+  tiendaun_catalogo_ms:
+    container_name: tiendaun_catalogo_ms
+    restart: always
+    build: .
+    ports: 
+      - "3000:3000"
+    links:
+      - tiendaun_catalogo_db
+    volumes: 
+      - .:/usr/src/app
+      - /usr/src/app/node_modules
+    logging: 
+          options: 
+               max-size: "10m" 
+               max-file: "3"
+    
+  tiendaun_catalogo_db:
+    container_name: tiendaun_catalogo_db
+    image: mongo
+    ports: 
+      - "20017:20017"
+    logging: 
+          options: 
+               max-size: "10m" 
+               max-file: "3"
