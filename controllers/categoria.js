@@ -1,6 +1,3 @@
-const express = require('express');
-const bodyParser = require('body-parser');
-const Producto = require('../models/producto');
 const Categoria = require('../models/categoria');
 const  STATUS_CODES  = require("../utils/constants") ;
 class categoryController{
@@ -20,11 +17,12 @@ class categoryController{
         try {
         const savedDoc = await newCategory.save();
         console.log('El documento se ha guardado exitosamente', savedDoc);
+        res.json({mensaje:'La categoria: ' + req.body.nombre +  ' será añadida'});
         } catch (err) {
         console.error('Error al guardar la categoria', err);
         res.json({mensaje:'Error al guardar la categoria'});
         }
-        res.json({mensaje:'La categoria: ' + req.body.nombre +  ' será añadida'});
+        
     };
 }
 module.exports = categoryController;

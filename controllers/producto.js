@@ -1,11 +1,7 @@
 const express = require('express');
-const bodyParser = require('body-parser');
 const Producto = require('../models/producto');
-const Categoria = require('../models/categoria');
 const  STATUS_CODES  = require("../utils/constants") ;
-function filtrarPorAtributo(arreglo, atributo, valor) {
-    return arreglo.filter((objeto) => objeto[atributo].includes(valor));
-  }
+
 class productController{
     constructor() {   
     };
