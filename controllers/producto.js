@@ -43,11 +43,12 @@ class productController{
         try {
         const savedDoc = await newProduct.save();
         console.log('El documento se ha guardado exitosamente', savedDoc);
+        res.json({mensaje:'El producto con nombre: ' + req.body.nombre + ' y descripcion: ' + req.body.descripcion + ' será añadido'});
         } catch (err) {
         console.error('Error al guardar el producto', err);
         res.json({mensaje:'Error al guardar el producto'});
         }
-        res.json({mensaje:'El producto con nombre: ' + req.body.nombre + ' y descripcion: ' + req.body.descripcion + 'será añadido'});
+        
     };
 
     updateProduct = async(req, res, next) => {
