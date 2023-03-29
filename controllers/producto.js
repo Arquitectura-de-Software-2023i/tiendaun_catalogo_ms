@@ -134,7 +134,7 @@ class productController{
         try {
             const productos = await Producto.find({ nombre: { $regex: new RegExp(nombre, 'i') } }).populate('categoria');
             if (productos.length>0){
-                console.log((productos[0].categoria));
+            
                 res.json(productos);
             }
             else{
