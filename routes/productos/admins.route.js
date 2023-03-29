@@ -1,8 +1,7 @@
 const productController = require('../../controllers/producto');
-const  STATUS_CODES  = require("../../utils/constants") ;
+const STATUS_CODES  = require("../../utils/constants") ;
 const express = require('express');
 const bodyParser = require('body-parser');
-const Producto = require('../../models/producto');
 
 const productRouterAdmin = express.Router();
 productRouterAdmin.use(bodyParser.json());
@@ -16,13 +15,7 @@ productRouterAdmin.route('/')
         res.json({mensaje:'Operacion PUT no permitida en /admins/productos'});
     })
     .delete(function(req, res) {
-        Producto.deleteMany({}, function(err) {
-          if (err) {
-            console.error(err);
-            return res.status(500).json({ error: 'Error al borrar los productos.' });
-          }
-          res.json({ mensaje: 'Productos borrados exitosamente.' });
-        });
+      res.json({ mensaje: 'DELETE no soportada en admins/productos' });
       });
 
 productRouterAdmin.route('/:productId')

@@ -1,7 +1,7 @@
 const categoryController = require('../controllers/categoria');
 const express = require('express');
 const bodyParser = require('body-parser');
-const Categoria = require('../models/categoria');
+
 
 const categoryRouterAdmin = express.Router();
 categoryRouterAdmin.use(bodyParser.json());
