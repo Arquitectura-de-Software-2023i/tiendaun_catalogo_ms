@@ -13,5 +13,6 @@ var CategoriaSchema = new Schema({
         unique: false
     }
 });
+
 let Categoria = mongoose.model('Categoria', CategoriaSchema);
 module.exports = Categoria;
