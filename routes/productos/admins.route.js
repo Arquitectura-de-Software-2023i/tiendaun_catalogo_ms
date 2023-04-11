@@ -2,7 +2,6 @@ const productController = require('../../controllers/producto');
 const STATUS_CODES  = require("../../utils/constants") ;
 const express = require('express');
 const bodyParser = require('body-parser');
-
 const productRouterAdmin = express.Router();
 productRouterAdmin.use(bodyParser.json());
 const productsController = new productController();

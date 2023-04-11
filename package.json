@@ -15,9 +15,11 @@
     "jade": "~1.11.0",
     "mongodb": "^5.1.0",
     "mongoose": "^7.0.0",
-    "morgan": "~1.9.1"
+    "morgan": "~1.9.1",
+    "request": "^2.88.2"
   },
   "devDependencies": {
+    "amqplib": "^0.10.3",
     "nodemon": "^2.0.21"
   }
 }

@@ -1,5 +1,6 @@
 const Categoria = require('../models/categoria');
 const  STATUS_CODES  = require("../utils/constants") ;
+//import {producer} from '../middlewares/sender';
 class categoryController{
     getAllCategories= async (req, res) => {
         try {
@@ -26,3 +27,5 @@ class categoryController{
     };
 }
 module.exports = categoryController;
+
+//getChatId: (_, { id }) => Promise.resolve(generalRequest(`${URL}/chat/${id}`, '')).then((value) => { return value}),
