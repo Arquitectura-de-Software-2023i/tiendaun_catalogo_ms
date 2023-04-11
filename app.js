@@ -11,7 +11,7 @@ const DB_URI = process.env.DB_URI;
 //connection to mongo
 const mongoose = require('mongoose');
 
-const uri ='mongodb://127.0.0.1:27017/TiendaUn_catalogo_db';
+const uri ='mongodb+srv://Jrativa:TiendaUnCatalogoDB@cluster0.nbsesbc.mongodb.net/?retryWrites=true&w=majority';
 mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => console.log('Conexión exitosa a la base de datos'))
   .catch(err => console.log('Error al conectar a la base de datos: ' + err));

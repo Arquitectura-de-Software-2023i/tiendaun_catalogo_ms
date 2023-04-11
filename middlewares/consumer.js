@@ -3,7 +3,7 @@ const request = require('request');
 
 const rabbitSettings = {
   protocol: "amqp",
-  hostname: "rabbitmq",
+  hostname: "localhost",
   port: 5672,
   username: "guest",
   password: "guest",
