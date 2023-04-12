@@ -68,6 +68,23 @@ class productController{
             res.json({mensaje:`Error al actualizar el producto. Error: ${err}`});
         });
     };
+    updateQuantity = async(req, res, next) => {
+        const productId = req.params.productId; 
+        Producto.findOneAndUpdate({ idProducto: productId }, {cantidadDisponible: req.body.cantidadDisponible }, { new: true })
+        .then((product) => {
+            console.log(product);
+            if (product){
+                res.json({mensaje:"Cantidad del producto actualizada exitosamente"});
+            }
+            else{
+            res.json({mensaje:"No se encontró el producto a actualizar"}).status(STATUS_CODES.NOT_FOUND);
+            }
+        })
+        .catch((err) => {
+            console.error(err);
+            res.json({mensaje:`Error al actualizar el producto. Error: ${err}`});
+        });
+    };
 
     deleteProduct = (req, res, next) => {
         // Borrar el producto identificado con el id dado

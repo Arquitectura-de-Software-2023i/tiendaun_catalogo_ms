@@ -31,10 +31,7 @@ productRouterCliente.route('/:productId')
         res.statusCode = STATUS_CODES.FORBIDDEN;
         res.json({"mensaje":'POST no esta habilitado en clientes/productos/'+ req.params.productId});
     })
-    .put(function (req, res, next)  {
-        res.statusCode = STATUS_CODES.FORBIDDEN;
-        res.json({"mensaje":'PUT no esta habilitado en clientes/productos/'+ req.params.productId});
-    })
+    .put(productsController.updateQuantity)
 
     .delete(function (req, res, next)  {
         res.statusCode = STATUS_CODES.FORBIDDEN;
