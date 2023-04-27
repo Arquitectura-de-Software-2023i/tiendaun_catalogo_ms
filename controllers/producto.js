@@ -42,10 +42,8 @@ class productController{
           });
         try {
         const savedDoc = await newProduct.save();
-        console.log('El documento se ha guardado exitosamente', savedDoc);
         res.json({mensaje:'El producto con nombre: ' + req.body.nombre + ' y descripcion: ' + req.body.descripcion + ' será añadido'});
         } catch (err) {
-        console.error('Error al guardar el producto', err);
         res.json({mensaje:'Error al guardar el producto'});
         }
         
@@ -55,7 +53,6 @@ class productController{
         const productId = req.params.productId; // obtenemos el valor del ID a partir de los parámetros de la ruta
         Producto.findOneAndUpdate({ idProducto: productId }, { nombre: req.body.nombre, descripcion: req.body.descripcion, precio: req.body.precio, cantidadDisponible: req.body.cantidadDisponible }, { new: true })
         .then((product) => {
-            console.log(product);
             if (product){
                 res.json({mensaje:"Producto actualizado exitosamente"});
             }
