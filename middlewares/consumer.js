@@ -32,7 +32,7 @@ const consume = async () => {
       
       //Make a request to a server with the query data
       const options = {
-        url: "http://0.0.0.0:3000/admins/productos/",
+        url: "https://tiendaun-catalogo-ms-7gru2wm3bq-uc.a.run.app/admins/productos/",
         method: "POST",
         headers: {
           "Content-Type": "application/json",
