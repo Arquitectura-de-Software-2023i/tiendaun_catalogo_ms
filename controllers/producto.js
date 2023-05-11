@@ -32,8 +32,9 @@ class productController{
     };
 
     postProduct = async (req, res, next) => {
+        const numberOfProducts = (await Producto.find()).length;
         const newProduct = new Producto({
-            idProducto: req.body.idProducto,
+            idProducto: numberOfProducts+1,
             nombre: req.body.nombre,
             descripcion: req.body.descripcion,
             precio: req.body.precio,
